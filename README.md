@@ -10,6 +10,7 @@ Please check out our new release on [**Segment Anything Model 2 (SAM 2)**](https
 
 **Segment Anything Model 2 (SAM 2)** is a foundation model towards solving promptable visual segmentation in images and videos. We extend SAM to video by considering images as a video with a single frame. The model design is a simple transformer architecture with streaming memory for real-time video processing. We build a model-in-the-loop data engine, which improves model and data via user interaction, to collect [**our SA-V dataset**](https://ai.meta.com/datasets/segment-anything-video), the largest video segmentation dataset to date. SAM 2 trained on our data provides strong performance across a wide range of tasks and visual domains.
 
+**Segment Anything Model 2 (SAM 2)**는 이미지와 비디오에서 프롬프트를 기반으로 한 시각적 세그멘테이션을 해결하기 위한 기본 모델입니다. SAM을 확장하여 이미지를 단일 프레임 비디오로 간주함으로써 비디오에도 적용할 수 있게 되었습니다. 모델 설계는 실시간 비디오 처리를 위한 스트리밍 메모리가 포함된 간단한 트랜스포머 아키텍처입니다. 우리는 사용자와의 상호작용을 통해 모델과 데이터를 개선하는 모델-내부 데이터 엔진을 구축했으며, 이를 통해 현재까지 가장 큰 비디오 세그멘테이션 데이터셋인 SA-V 데이터셋(https://ai.meta.com/datasets/segment-anything-video)을 수집했습니다. SAM 2는 이 데이터를 학습하여 다양한 작업과 시각적 도메인에서 강력한 성능을 제공합니다.
 # Segment Anything
 
 **[Meta AI Research, FAIR](https://ai.facebook.com/research/)**
