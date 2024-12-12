@@ -55,6 +55,8 @@ pip install opencv-python pycocotools matplotlib onnxruntime onnx
 
 First download a [model checkpoint](#model-checkpoints). Then the model can be used in just a few lines to get masks from a given prompt:
 
+2. 프롬프트로 마스크 생성:
+
 ```
 from segment_anything import SamPredictor, sam_model_registry
 sam = sam_model_registry["<model_type>"](checkpoint="<path/to/checkpoint>")
@@ -62,6 +64,7 @@ predictor = SamPredictor(sam)
 predictor.set_image(<your_image>)
 masks, _, _ = predictor.predict(<input_prompts>)
 ```
+3. 이미지 전체 마스크 생성:
 
 or generate masks for an entire image:
 
@@ -73,12 +76,18 @@ masks = mask_generator.generate(<your_image>)
 ```
 
 Additionally, masks can be generated for images from the command line:
+ SAM(Segment Anything Model)을 **커맨드 라인(Command Line)**을 사용하여 이미지에 대한 세그멘테이션 마스크를 생성하는 방법과, 관련 예제 노트북에 대한 안내를 포함합니다.
+
+1. 커맨드 라인에서 마스크 생성하기
 
 ```
 python scripts/amg.py --checkpoint <path/to/checkpoint> --model-type <model_type> --input <image_or_folder> --output <path/to/output>
 ```
+2. SAM의 다양한 기능을 활용하는 방법을 보여주는 예제 노트북이 제공됩니다.
 
 See the examples notebooks on [using SAM with prompts](/notebooks/predictor_example.ipynb) and [automatically generating masks](/notebooks/automatic_mask_generator_example.ipynb) for more details.
+
+3. 시각적 결과 예제
 
 <p float="left">
   <img src="assets/notebook1.png?raw=true" width="49.1%" />
@@ -88,6 +97,9 @@ See the examples notebooks on [using SAM with prompts](/notebooks/predictor_exam
 ## ONNX Export
 
 SAM's lightweight mask decoder can be exported to ONNX format so that it can be run in any environment that supports ONNX runtime, such as in-browser as showcased in the [demo](https://segment-anything.com/demo). Export the model with
+**Segment Anything Model (SAM)**의 가벼운 마스크 디코더를 ONNX 형식으로 변환할 수 있습니다. 이렇게 변환하면 SAM을 ONNX 런타임(예: 브라우저)에서 실행할 수 있습니다. SAM의 브라우저 데모에서도 이 기능이 사용되었습니다.
+
+1. ONNX 변환 명령어
 
 ```
 python scripts/export_onnx_model.py --checkpoint <path/to/checkpoint> --model-type <model_type> --output <path/to/output>
@@ -99,7 +111,15 @@ See the [example notebook](https://github.com/facebookresearch/segment-anything/
 
 The `demo/` folder has a simple one page React app which shows how to run mask prediction with the exported ONNX model in a web browser with multithreading. Please see [`demo/README.md`](https://github.com/facebookresearch/segment-anything/blob/main/demo/README.md) for more details.
 
+demo/ 폴더에는 내보낸 ONNX 모델을 사용하여 멀티스레딩 환경에서 웹 브라우저에서 마스크 예측을 실행하는 단일 페이지 React 앱이 포함되어 있습니다. 자세한 내용은 demo/README.md를 참조하세요.
+
 ## <a name="Models"></a>Model Checkpoints
+- default 또는 vit_h: ViT-H SAM 모델
+(고성능 모델)
+- vit_l: ViT-L SAM 모델
+(중간 크기 모델)
+- vit_b: ViT-B SAM 모델
+(작은 크기 모델)
 
 Three model versions of the model are available with different backbone sizes. These models can be instantiated by running
 
